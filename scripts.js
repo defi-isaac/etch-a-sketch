@@ -1,6 +1,6 @@
 const gridContainer = document.querySelector('#gridContainer');
 
-gridContainer.setAttribute('style', 'width: 32em; height: 32em; border: 2px solid black');
+gridContainer.setAttribute('style', 'width: 30em; height: 30em; border: 2px solid black');
 
 function divCreator () {
     return document.createElement('div');
@@ -19,15 +19,34 @@ function createGrid (rowNum) {
         gridContainer.appendChild(rows);
 
         for (let j = 0; j < rowNum; j++) {
-            let cols = divCreator();
-            cols.classList.add('gridCol');
-            rows.appendChild(cols);
+            let box = divCreator();
+            box.classList.add('gridBox');
+            rows.appendChild(box);
 
-            addHover(cols);
+            addHover(box);
+            
         }
 
     }
 }
-// let rowNum = prompt('What should the dimensions be?', 0);
-createGrid(10);
+
+function clearGrid() {
+    while (gridContainer.firstChild) {
+        gridContainer.removeChild(gridContainer.firstChild);
+    }
+}
+
+const sizeChange = document.querySelector('#sizeChange');
+createGrid(16);
+sizeChange.addEventListener('click', () => {
+    let rowNum = prompt('How many squares per side do you want?', 16);
+    clearGrid();
+    createGrid(rowNum);
+})
+
+const clear = document.querySelector('#clear');
+clear.addEventListener('click', () => {
+    clearGrid()
+})
+
 
