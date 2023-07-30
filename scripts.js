@@ -36,6 +36,11 @@ function clearGrid() {
     }
 }
 
+function clearBackground() {
+    const gridBoxes = document.querySelectorAll('.gridBox');
+    gridBoxes.forEach(box => box.style.background = 'white');
+}
+
 const sizeChange = document.querySelector('#sizeChange');
 createGrid(16);
 sizeChange.addEventListener('click', () => {
@@ -46,7 +51,7 @@ sizeChange.addEventListener('click', () => {
 
 const clear = document.querySelector('#clear');
 clear.addEventListener('click', () => {
-    clearGrid()
+    clearBackground();
 })
 
 
