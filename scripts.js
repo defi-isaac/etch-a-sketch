@@ -1,3 +1,5 @@
+const DEFAULT_SIZE = 16;
+
 const gridContainer = document.querySelector('#gridContainer');
 
 gridContainer.setAttribute('style', 'width: 30em; height: 30em; border: 2px solid black');
@@ -42,7 +44,7 @@ function clearBackground() {
 }
 
 const sizeChange = document.querySelector('#sizeChange');
-createGrid(16);
+createGrid(DEFAULT_SIZE);
 sizeChange.addEventListener('click', () => {
     let rowNum = prompt('How many squares per side do you want?', 16);
     clearGrid();
@@ -54,4 +56,9 @@ clear.addEventListener('click', () => {
     clearBackground();
 })
 
+const reset = document.querySelector('#reset');
+reset.addEventListener('click', () => {
+    clearGrid();
+    createGrid(DEFAULT_SIZE);
+})
 
